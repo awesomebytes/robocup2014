@@ -12,6 +12,7 @@ import os
 import sys
 from speech_states.say import text_to_say
 from speech_states.listen_to import ListenToSM
+import random
 
 # Some color codes for prints, from http://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
 ENDC = '\033[0m'
@@ -25,8 +26,10 @@ class prepare_say(smach.State):
                                 output_keys=['tts_text','tts_wait_before_speaking'])
 
     def execute(self, userdata):
-
-        userdata.tts_text = "Did you say " + userdata.asr_userSaid + "?"
+        if random.random() > 0.5:
+            userdata.tts_text = "Did you say " + userdata.asr_userSaid + "?"
+        else:
+            userdata.tts_text = "I heard " + userdata.asr_userSaid
         userdata.tts_wait_before_speaking = 0
 
         return 'succeeded'

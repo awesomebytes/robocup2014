@@ -160,12 +160,12 @@ class SayYesOrNoSM_2(smach.StateMachine):
             smach.StateMachine.add(
                 "process_command",
                 ProcessCommand(),
-                transitions={'yes': 'succeeded', 'no': 'aborted', 'aborted':'aborted'})  
+                transitions={'yes': 'succeeded', 'no': 'repeat', 'aborted':'aborted'})  
 
             # Ask for repeat
             smach.StateMachine.add(
                 'repeat',
-                text_to_say("Excuse me, I don't understand you. Can you repeat?"),
+                text_to_say("Excuse me, I didn't understand you. Can you repeat?"),
                 transitions={'succeeded': 'aborted', 'aborted': 'aborted', 
                 'preempted': 'preempted'})             
            

@@ -25,7 +25,7 @@ def main():
     sm = smach.StateMachine(outcomes=['succeeded', 'preempted', 'aborted'])
     print "put the name of the gramar"
     lineRead = sys.stdin.readline()
-    GRAMAR = "robocup/"+lineRead[:len(lineRead)-1]
+    GRAMAR = lineRead[:len(lineRead)-1]
     with sm:
         sm.userdata.grammar_name = None
 

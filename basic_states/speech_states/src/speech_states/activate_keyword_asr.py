@@ -29,7 +29,7 @@ class prepareData(smach.State):
             return 'aborted'
         
         #Priority in init
-        userdata.keyword_name = self.keyword if self.keyword else userdata.keyword_name   
+        userdata.keyword_name = self.keyword if self.keyword else userdata.keyword_name
  
         return 'succeeded'
     
